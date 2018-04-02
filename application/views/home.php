@@ -45,6 +45,12 @@
             <li class="nav-item">
               <a class="nav-link" href="#image">Image</a>
             </li>
+
+
+            <li class="nav-item">
+              <a class="nav-link" href="home">Blog</a>
+            </li>
+
           </ul>
         </div>
       </div>

@@ -3,6 +3,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller {
 
+	public function index()
+	{
+		$this->load->model('artikel');
+		$data['artikel'] = $this->artikel->get_artikels();
+		$this->load->view('home_view', $data);
+	}
+
+	public function detail($id)
+	{
+		$this->load->model('artikel');
+		$data['detail'] = $this->artikel->get_single($id);
+		$this->load->view('home_detail', $data);
+	}
+
+}
+
+/**
 	/**
 	 * Index Page for this controller.
 	 *
@@ -18,8 +35,4 @@ class Home extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
-		$this->load->view('home');
-	}
-}
+	

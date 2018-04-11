@@ -75,10 +75,7 @@
     <tr>
     
    <span id="about"></span>   
-   <center><b>
-    Belanja Online di ZALORA Indonesia
-     
-   </center> </b>
+   
 
         <?php foreach ($detail as $key): ?>
       <div class="container">

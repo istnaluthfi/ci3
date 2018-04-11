@@ -17,7 +17,52 @@ class Home extends CI_Controller {
 		$this->load->view('home_detail', $data);
 	}
 
+
+
+public function tambah()
+{
+	$this->load->model('artikel');
+	$data = array();
+
+	if ($this->input->post('simpan')){
+		$upload = $this->artikel->upload();
+
+		if ($upload['result'] == 'success') {
+			$this->artikel->insert($upload);
+			redirect('home');
+		}else{
+			$data['message'] = $upload['error'];
+		}
+	}
+
+	$this->load->view('home_view', $data);
+	}
+
+
+	public function edit($id_blog){
+		$this->load->model('artikel');
+		$data['tipe'] = "Edit";
+		$data['default'] = $this->artikel->get_default($id_blog);
+
+		if(isset($_POST['simpan'])){
+			$this->artikel->update($_POST, $id_blog);
+			redirect('home_view');
+		}
+
+		$this->load->view("home_view_form",$data);
+	}
+
+
+	public function delete($id_blog){
+		$this->load->model('artikel');
+		$this->artikel->delete($id_blog);
+		redirect('home');
+	}
+
 }
+
+
+
 
 /**
 	/**

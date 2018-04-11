@@ -51,6 +51,8 @@
               <a class="nav-link" href="home">Blog</a>
             </li>
 
+
+
           </ul>
         </div>
       </div>
@@ -79,9 +81,14 @@
     Perkembangan Trend Fashion Indonesia
      
    </center> </b>
+   <br></br>
 
     <div class="container text-center">
       <?php foreach ($artikel as $key): ?>
+
+
+<!-- form untuk menambahkan data -->
+
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
           <table style="margin-bottom: 30px;">
             <tr>
@@ -91,12 +98,54 @@
                   <br>
                   <?php echo $key->judul_blog ?>
                 </a>
+                <br></br>
+                <!-- <button>Edit</button> -->
+
+
+                <a href='home/Edit/<?php echo $key->id_blog?>' class='btn btn-sm btn-info'>Update</a>
+
+                <a href='home/delete/<?php echo $key->id_blog;?>' class='btn btn-sm btn-danger'>Hapus</a>
+
               </td>
             </tr>
           </table>
         </div>
       <?php endforeach ?>
     </div>
+
+    <div class="container">
+      <?php
+        echo form_open('home/tambah', array('enctype'=>'multipart/form-data')); 
+       ?>
+      <table>
+        <tr>
+          <td>Judul</td>
+          <td>:</td>
+          <td><input type="text" name="input_judul" value="<?php echo set_value('input_judul'); ?>"></td>
+        </tr>
+        <tr>
+          <td>Content</td>
+          <td>:</td>
+          <td><input type="text" name="input_content" value=""></td>
+        </tr>
+        <tr>
+          <td>Tanggal </td>
+          <td>:</td>
+          <td><input type="text" name="input_tanggal" value=""></td>
+        </tr>
+        <tr>
+          <td>Gambar</td>
+          <td>:</td>
+          <td><input type="file" name="input_gambar"></td>
+        </tr>
+        <tr>
+          <td colspan="3"><input type="submit" name="simpan" value="simpan"></td>
+        </tr>
+
+
+      </table>
+    </div>
+
 
               <li class="list-inline-item">
                 <a href="#">

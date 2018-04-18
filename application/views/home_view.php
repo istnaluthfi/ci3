@@ -75,11 +75,15 @@
 
     <!-- Main Content -->
     <tr>
-    
+   <div class="container">
+        <a href="home/tambah" class="btn btn-success"> Tambah </a>
+   </div>
    <span id="about"></span>   
    <center><b>
     Perkembangan Trend Fashion Indonesia
      
+
+
    </center> </b>
    <br></br>
 
@@ -102,7 +106,7 @@
                 <!-- <button>Edit</button> -->
 
 
-                <a href='home/Edit/<?php echo $key->id_blog?>' class='btn btn-sm btn-info'>Update</a>
+                <a href='home/edit/<?php echo $key->id_blog?>' class='btn btn-sm btn-info'>Update</a>
 
                 <a href='home/delete/<?php echo $key->id_blog;?>' class='btn btn-sm btn-danger'>Hapus</a>
 
@@ -114,7 +118,7 @@
     </div>
 
     <div class="container">
-      <?php
+      <!-- <?php
         echo form_open('home/tambah', array('enctype'=>'multipart/form-data')); 
        ?>
       <table>
@@ -141,7 +145,7 @@
         <tr>
           <td colspan="3"><input type="submit" name="simpan" value="simpan"></td>
         </tr>
-
+ -->
 
       </table>
     </div>

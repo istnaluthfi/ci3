@@ -35,9 +35,12 @@ class Artikel extends CI_Model {
 		$data = array(
 			'id_blog' => '',
 			'judul_blog' => $this->input->post('input_judul'),
-			'content' => $this->input->post('input_content'),
 			'tanggal_blog' => $this->input->post('input_tanggal'),
-			'image' => $upload['file']['file_name']
+			'content' => $this->input->post('input_content'),
+			'image' => $upload['file']['file_name'],
+			'penulis' => $this->input->post('input_penulis'),
+			'sumber' => $this->input->post('input_sumber'),
+			'lokasi_penulis' => $this->input->post('input_lokasi_penulis'),
 		);
 
 		$this->db->insert('blog', $data);

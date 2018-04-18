@@ -24,25 +24,56 @@ public function tambah()
 	$this->load->model('artikel');
 	$data = array();
 
-	if ($this->input->post('simpan')){
-		$upload = $this->artikel->upload();
+	$this->load->library('form_validation');
+	$this->form_validation->set_rules('input_judul','isi judul!!!','required', array('required' => 'isi %s,'));
+	$this->form_validation->set_rules('input_content','isi konten!!!','required', array('required' => 'isi %s,'));
+	$this->form_validation->set_rules('input_tanggal','isi tanggal!!!','required', array('required' => 'isi %s,'));
+	$this->form_validation->set_rules('input_penulis','isi penulis!!!','required', array('required' => 'isi %s,'));
+	$this->form_validation->set_rules('input_sumber','isi sumber!!!','required', array('required' => 'isi %s,'));
+	$this->form_validation->set_rules('input_lokasi_penulis','isi lokasi_penulis!!!','required', array('required' => 'isi %s,'));
 
-		if ($upload['result'] == 'success') {
-			$this->artikel->insert($upload);
-			redirect('home');
-		}else{
-			$data['message'] = $upload['error'];
+
+	if($this->form_validation->run()==FALSE){
+			$this->load->view('tambah');
 		}
-	}
+		else{
+			if ($this->input->post('simpan')) {
+			$upload = $this->artikel->upload();
 
-	$this->load->view('home_view', $data);
+			if ($upload['result'] == 'success') {
+				$this->artikel->insert($upload);
+				redirect('home');
+			}else{
+				$data['message'] = $upload['error'];
+			}
+		}
+		
+
+		$this->load->view('home_view', $data);
 	}
+}
+
+
+
+	// if ($this->input->post('simpan')){
+	// 	$upload = $this->artikel->upload();
+
+	// 	if ($upload['result'] == 'success') {
+	// 		$this->artikel->insert($upload);
+	// 		redirect('home');
+	// 	}else{
+	// 		$data['message'] = $upload['error'];
+	// 	}
+	// }
+
+	// $this->load->view('home_view', $data);
+	// }
 
 
 	public function edit($id_blog){
 		$this->load->model('artikel');
 		$data['tipe'] = "Edit";
-		$data['default'] = $this->artikel->get_default($id_blog);
+		$data['default'] = $this->artikel->get_single($id_blog);
 
 		if(isset($_POST['simpan'])){
 			$this->artikel->update($_POST, $id_blog);

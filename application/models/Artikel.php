@@ -62,7 +62,21 @@ class Artikel extends CI_Model {
 		$query = $this->db->query('DELETE from blog WHERE id_blog= '.$id_blog);
 	}
 
-}
+	public function create_category()
+   {
+       $data = array(
+           'cat_name'          => $this->input->post('cat_name'),
+           'cat_description'   => $this->input->post('cat_description')
+       );
 
-/* End of file blog.php */
-/* Location: ./application/models/blog.php */
+       return $this->db->insert('categories', $data);
+   }
+
+	public function get_all_categories()
+	{
+		$this->db->order_by('cat_name');
+		$query = $this->db->get('categories');
+		return $query->result();
+	}
+
+}

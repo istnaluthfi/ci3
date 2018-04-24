@@ -84,6 +84,34 @@ public function tambah()
 	}
 
 
+public function create()
+    {
+        // Judul Halaman
+        $data['page_title'] = 'Buat Kategori';
+
+        // Form validasi untuk Nama Kategori
+        $this->form_validation->set_rules(
+            'cat_name',
+            'Nama Kategori',
+            'required|is_unique[categories.cat_name]',
+            array(
+                'required' => 'Isi %s donk, males amat.',
+                'is_unique' => 'Judul ' . $this->input->post('title') . ' sudah ada 
+bosque.'
+            )
+        );
+if($this->form_validation->run() === FALSE){
+            $this->load->view('templates/header');
+            $this->load->view('categories/cat_create', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->category_model->create_category();
+            redirect('home');
+        }
+    }
+
+
+
 	public function delete($id_blog){
 		$this->load->model('artikel');
 		$this->artikel->delete($id_blog);

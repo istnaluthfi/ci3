@@ -96,17 +96,16 @@ public function create()
             'required|is_unique[categories.cat_name]',
             array(
                 'required' => 'Isi %s donk, males amat.',
-                'is_unique' => 'Judul ' . $this->input->post('title') . ' sudah ada 
-bosque.'
+                'is_unique' => 'Judul ' . $this->input->post('title') . ' sudah ada bosque.'
             )
         );
 if($this->form_validation->run() === FALSE){
-            $this->load->view('templates/header');
-            $this->load->view('categories/cat_create', $data);
-            $this->load->view('templates/footer');
+            // $this->load->view('templates/header');
+            $this->load->view('home_view', $data);
+            // $this->load->view('templates/footer');
         } else {
             $this->category_model->create_category();
-            redirect('home');
+            redirect('Category');
         }
     }
 

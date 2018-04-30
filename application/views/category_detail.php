@@ -11,7 +11,7 @@
     <title>Tugas Web Framework</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/vendor/bootstrap/css/bootstrap.min.css">
 
     <!-- Custom fonts for this template -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -19,7 +19,7 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
     <!-- Custom styles for this template -->
-    <link rel ="stylesheet" href="assets/css/clean-blog.min.css">
+    <link rel ="stylesheet" href="../../assets/css/clean-blog.min.css">
 
   </head>
 
@@ -28,7 +28,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand" href="#page-top"><img src="assets/img/logo.jpg" width="60" height="40"></a>
+        <a class="navbar-brand" href="#page-top"><img src="../../assets/img/logo.jpg" width="60" height="40"></a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
@@ -36,23 +36,20 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-trigger" href="welcome">Home</a>
+              <a class="nav-link js-trigger" href="../../welcome">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="welcome">About</a>
+              <a class="nav-link" href="../../welcome">About</a>
             </li>
            
             <li class="nav-item">
-              <a class="nav-link" href="welcome">Image</a>
+              <a class="nav-link" href="../../welcome">Image</a>
             </li>
 
 
             <li class="nav-item">
-              <a class="nav-link" href="home">Blog</a>
+              <a class="nav-link" href="../../home">Blog</a>
             </li>
-
-
-
 
           </ul>
         </div>
@@ -76,86 +73,31 @@
 
     <!-- Main Content -->
     <tr>
-   <div class="container">
-        <a href="home/tambah" class="btn btn-success"> Tambah </a>
-   </div>
+    
    <span id="about"></span>   
-   <center><b>
-    Perkembangan Trend Fashion Indonesia
-     
+   
 
-
-   </center> </b>
-   <br></br>
-
-    <div class="container text-center">
-      <?php foreach ($artikel as $key): ?>
-
-
-<!-- form untuk menambahkan data -->
-
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-          <table style="margin-bottom: 30px;">
-            <tr>
-              <td>
-                <a href="home/detail/<?php echo $key->id_blog ?>" style="color: black;">
-                  <img src="img/<?php echo $key->image;?>" alt="Image" width="500" height="400">
-                  <br>
-                  <?php echo $key->judul_blog ?>
-                </a>
-                <br></br>
-                <!-- <button>Edit</button> -->
-
-
-                <a href='home/edit/<?php echo $key->id_blog?>' class='btn btn-sm btn-info'>Update</a>
-
-                <a href='home/delete/<?php echo $key->id_blog;?>' class='btn btn-sm btn-danger'>Hapus</a>
-
+        <?php foreach ($detail as $key): ?>
+      <div class="container">
+        <table>
+          <tr class="text-center">
+            <td>
+              <h3><b><?php echo $key->judul_blog; ?></b><h3>
               </td>
-            </tr>
-          </table>
-        </div>
+          </tr>
+          <tr>
+            <td class="text-center">
+              <img src="../../img/<?php echo $key->image;?>" alt="Image" width="500" height="400">
+            </td>
+          </tr>
+          <tr>
+            <td class="text-justify">
+              <?php echo $key->content; ?>
+            </td>
+          </tr>
+        </table>
+      </div>
       <?php endforeach ?>
-    </div>
-
-    <div class="container">
-      <!-- <?php
-        echo form_open('home/tambah', array('enctype'=>'multipart/form-data')); 
-       ?>
-      <table>
-        <tr>
-          <td>Judul</td>
-          <td>:</td>
-          <td><input type="text" name="input_judul" value="<?php echo set_value('input_judul'); ?>"></td>
-        </tr>
-        <tr>
-          <td>Content</td>
-          <td>:</td>
-          <td><input type="text" name="input_content" value=""></td>
-        </tr>
-        <tr>
-          <td>Tanggal </td>
-          <td>:</td>
-          <td><input type="text" name="input_tanggal" value=""></td>
-        </tr>
-        <tr>
-          <td>Gambar</td>
-          <td>:</td>
-          <td><input type="file" name="input_gambar"></td>
-        </tr>
-        <tr>
-          <td colspan="3"><input type="submit" name="simpan" value="simpan"></td>
-        </tr>
- -->
-
-      </table>
-    </div>
-
-<br>
-<div>
-  <a href='category' class='btn btn-sm btn-danger'>Kategori</a>
-</div>
-
 
               <li class="list-inline-item">
                 <a href="#">

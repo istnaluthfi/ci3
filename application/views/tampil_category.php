@@ -53,7 +53,6 @@
 
 
 
-
           </ul>
         </div>
       </div>
@@ -74,86 +73,33 @@
       </div>
     </header>
 
-    <!-- Main Content -->
-    <tr>
-   <div class="container">
-        <a href="home/tambah" class="btn btn-success"> Tambah </a>
-   </div>
-   <span id="about"></span>   
-   <center><b>
-    Perkembangan Trend Fashion Indonesia
-     
+    <!-- Main Content -->              
 
 
-   </center> </b>
-   <br></br>
 
-    <div class="container text-center">
-      <?php foreach ($artikel as $key): ?>
-
-
-<!-- form untuk menambahkan data -->
-
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-          <table style="margin-bottom: 30px;">
-            <tr>
-              <td>
-                <a href="home/detail/<?php echo $key->id_blog ?>" style="color: black;">
-                  <img src="img/<?php echo $key->image;?>" alt="Image" width="500" height="400">
-                  <br>
-                  <?php echo $key->judul_blog ?>
-                </a>
-                <br></br>
                 <!-- <button>Edit</button> -->
 
 
-                <a href='home/edit/<?php echo $key->id_blog?>' class='btn btn-sm btn-info'>Update</a>
 
-                <a href='home/delete/<?php echo $key->id_blog;?>' class='btn btn-sm btn-danger'>Hapus</a>
+        <div>
+      <?php foreach ($Category as $key): ?>
+                <br>
+                <?php echo $key->id_cat ?>
+                  <br>
+                  <?php echo $key->cat_name ?>
+                <br>
+                <?php echo $key->cat_description ?>
+                <br>
+                <a href='home/edit/<?php echo $key->id_cat?>' class='btn btn-sm btn-info'>Update</a>
 
-              </td>
-            </tr>
-          </table>
-        </div>
-      <?php endforeach ?>
-    </div>
+                <a href='category/delete/<?php echo $key->id_cat;?>' class='btn btn-sm btn-danger'>Hapus</a>
+      <?php endforeach?>
 
-    <div class="container">
-      <!-- <?php
-        echo form_open('home/tambah', array('enctype'=>'multipart/form-data')); 
-       ?>
-      <table>
-        <tr>
-          <td>Judul</td>
-          <td>:</td>
-          <td><input type="text" name="input_judul" value="<?php echo set_value('input_judul'); ?>"></td>
-        </tr>
-        <tr>
-          <td>Content</td>
-          <td>:</td>
-          <td><input type="text" name="input_content" value=""></td>
-        </tr>
-        <tr>
-          <td>Tanggal </td>
-          <td>:</td>
-          <td><input type="text" name="input_tanggal" value=""></td>
-        </tr>
-        <tr>
-          <td>Gambar</td>
-          <td>:</td>
-          <td><input type="file" name="input_gambar"></td>
-        </tr>
-        <tr>
-          <td colspan="3"><input type="submit" name="simpan" value="simpan"></td>
-        </tr>
- -->
-
-      </table>
     </div>
 
 <br>
 <div>
-  <a href='category' class='btn btn-sm btn-danger'>Kategori</a>
+  <a href='category/create' class='btn btn-sm btn-danger'>Tambah</a>
 </div>
 
 

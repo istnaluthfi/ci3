@@ -12,6 +12,13 @@ class Artikel extends CI_Model {
 	{
 		$query = $this->db->query('select * from blog where id_blog='.$id);
 		return $query->result();
+
+		$this->db->select("*");
+		$this->db->from('blog');
+		$this->db->join('categories','blog.id_cat = categories.id_cat');
+		$this->db->Where('blog.id_blog='.$id);
+		return $this->db->get()->result();
+
 	}
 
 	public function upload(){
@@ -29,7 +36,7 @@ class Artikel extends CI_Model {
 			$return = array('result' => 'failed', 'file' => '', 'error' => $this->upload->display_errors());
 			return $return;
 		}
-	}
+	} 
 	public function insert($upload)
 	{
 		$data = array(

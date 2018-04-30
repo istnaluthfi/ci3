@@ -22,7 +22,9 @@ class Home extends CI_Controller {
 public function tambah()
 {
 	$this->load->model('artikel');
+	$this->load->model('category_model');
 	$data = array();
+	$data['Category'] = $this->category_model->get_categories();
 
 	$this->load->library('form_validation');
 	$this->form_validation->set_rules('input_judul','isi judul!!!','required', array('required' => 'isi %s,'));
@@ -34,7 +36,7 @@ public function tambah()
 
 
 	if($this->form_validation->run()==FALSE){
-			$this->load->view('tambah');
+			$this->load->view('tambah', $data);
 		}
 		else{
 			if ($this->input->post('simpan')) {

@@ -39,6 +39,17 @@
           <td><input type="text" name="input_lokasi_penulis" value="<?php echo set_value('input_lokasi_penulis'); ?>"></td>
         </tr>
 
+
+        <tr>
+          <label>Category</label>
+          <select name="id_cat" class="form-control" required> 
+            <option value="">Pilih Category</option>
+            <?php foreach ($Category as $Category): ?>
+              <option value="<?php echo $Category->id_cat; ?>"><?php echo $Category->cat_name; ?></option>
+              <?php endforeach; ?>
+            </select>
+            
+
         <tr>
           <td colspan="3"><input type="submit" name="simpan" value="<?php echo set_value('input_gambar'); ?>simpan"></td>
         </tr>

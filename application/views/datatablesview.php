@@ -58,6 +58,7 @@
 
 
 
+
           </ul>
         </div>
       </div>
@@ -70,66 +71,76 @@
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="site-heading">
-              <h1>Fashion Shop</h1>
-              <span class="subheading">Z A L O R A</span>
+              <!-- <h1>Fashion Shop</h1>
+              <span class="subheading">Z A L O R A</span> -->
             </div>
           </div>
         </div>
       </div>
     </header>
 
-    <!-- Main Content -->              
 
 
-
-                <!-- <button>Edit</button> -->
-
-
-
-        <div>
-      <?php foreach ($Category as $key): ?>
-                <br>
-                <?php echo $key->id_cat ?>
-                  <br>
-                  <?php echo $key->cat_name ?>
-                <br>
-                <?php echo $key->cat_description ?>
-                <br>
-                <a href='home/edit/<?php echo $key->id_cat?>' class='btn btn-sm btn-info'>Update</a>
-
-                <a href='category/delete/<?php echo $key->id_cat;?>' class='btn btn-sm btn-danger'>Hapus</a>
-      <?php endforeach?>
-
-    </div>
-
-<br>
-<div>
-  <a href='category/create' class='btn btn-sm btn-danger'>Tambah</a>
-</div>
-
-
-              <li class="list-inline-item">
-                <a href="#">
-                  <span class="fa-stack fa-lg">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-            </ul>
-            <p class="copyright text-muted">Copyright &copy; Your Website 2018</p>
+    <header class=" text-center d-flex">
+      <div class="container my-auto">
+        <div class="row">
+          
+          <div class="col-lg-10 mx-auto">
+            <h3 class="text-uppercase">
+              <strong>Data Table</strong>
+            </h3><hr>
           </div>
+    
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <table id="dt-basic" class="table table-striped table-bordered text-center">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Judul</th>
+                             <th>ID Kategori</th>
+                            <th>Tanggal</th>
+                            <th>Penulis</th>
+                            <th>Sumber</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($data as $d) : ?>
+                        <tr>
+                            <td><?php echo $d->id_blog ?></td>
+                            <td><?php echo $d->judul_blog ?></td>
+                            <td><?php echo $d->id_cat ?></td>
+                            <td><?php echo $d->tanggal_blog ?></td>
+                            <td><?php echo $d->penulis ?></td>
+                            <td><?php echo $d->sumber ?></td>
+                            <td>
+                                <a href="<?php echo base_url('/home/edit/') . $d->id_blog ?>" class="btn btn-sm btn-outline-primary">Edit</a> 
+                                <a href="<?php echo base_url('/blog/delete/') . $d->id_blog ?>" class="btn btn-sm btn-outline-danger">Delete</a> 
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
-      </div>
-    </footer>
+    </section>
+  
+</main>
+<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/jquery.dataTables.min.css">
+<script src="<?php echo base_url() ?>assets/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url() ?>assets/js/jquery.dataTables.bootstrap4.min.js"></script>
+<script src="<?php echo base_url() ?>assets/js/jquery-1.9.1.min.js"></script>
+<script>
+    jQuery(document).ready(function(){
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="assets/vendor/jquery/jquery.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        // Contoh inisialisasi Datatable tanpa konfigurasi apapun
+        // #dt-basic adalah id html dari tabel yang diinisialisasi
+        $('#dt-basic').DataTable();
+    });
 
-    <!-- Custom scripts for this template -->
-    <script src="assets/js/clean-blog.min.js"></script>
+</script>
 
-  </body>
 
-</html>
+

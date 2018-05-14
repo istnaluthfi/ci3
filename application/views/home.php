@@ -51,6 +51,11 @@
               <a class="nav-link" href="home">Blog</a>
             </li>
 
+
+            <li class="nav-item">
+              <a class="nav-link" href="Datatablesctr">Data Table</a>
+            </li>
+
           </ul>
         </div>
       </div>

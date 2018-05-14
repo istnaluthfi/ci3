@@ -11,15 +11,15 @@
     <title>Tugas Web Framework</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/vendor/bootstrap/css/bootstrap.min.css">
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url() ?>vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
     <!-- Custom styles for this template -->
-    <link rel ="stylesheet" href="assets/css/clean-blog.min.css">
+    <link rel ="stylesheet" href="<?php echo base_url() ?>assets/css/clean-blog.min.css">
 
   </head>
 
@@ -28,7 +28,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand" href="#page-top"><img src="assets/img/logo.jpg" width="60" height="40"></a>
+        <a class="navbar-brand" href="#page-top"><img src="<?php echo base_url() ?>assets/img/logo.jpg" width="60" height="40"></a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
@@ -36,19 +36,24 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-trigger" href="welcome">Home</a>
+              <a class="nav-link js-trigger" href="<?php echo base_url()?>welcome">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="welcome">About</a>
+              <a class="nav-link" href="<?php echo base_url()?>welcome">About</a>
             </li>
            
             <li class="nav-item">
-              <a class="nav-link" href="welcome">Image</a>
+              <a class="nav-link" href="<?php echo base_url()?>welcome">Image</a>
             </li>
 
 
             <li class="nav-item">
-              <a class="nav-link" href="home">Blog</a>
+              <a class="nav-link" href="<?php echo base_url()?>home">Blog</a>
+            </li>
+
+
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo base_url()?>Datatablesctr">Data Table</a>
             </li>
 
 
@@ -60,7 +65,7 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('assets/img/zalora.png')">
+    <header class="masthead" style="background-image: url('<?php echo base_url() ?>assets/img/zalora.png')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
@@ -77,7 +82,7 @@
     <!-- Main Content -->
     <tr>
    <div class="container">
-        <a href="home/tambah" class="btn btn-success"> Tambah </a>
+        <a href="<?php echo base_url() ?>home/tambah" class="btn btn-success"> Tambah </a>
    </div>
    <span id="about"></span>   
    <center><b>
@@ -99,7 +104,7 @@
             <tr>
               <td>
                 <a href="home/detail/<?php echo $key->id_blog ?>" style="color: black;">
-                  <img src="img/<?php echo $key->image;?>" alt="Image" width="500" height="400">
+                  <img src="<?php echo base_url() ?>img/<?php echo $key->image;?>" alt="Image" width="500" height="400">
                   <br>
                   <?php echo $key->judul_blog ?>
                 </a>
@@ -107,9 +112,9 @@
                 <!-- <button>Edit</button> -->
 
 
-                <a href='home/edit/<?php echo $key->id_blog?>' class='btn btn-sm btn-info'>Update</a>
+                <a href='<?php echo base_url() ?>home/edit/<?php echo $key->id_blog?>' class='btn btn-sm btn-info'>Update</a>
 
-                <a href='home/delete/<?php echo $key->id_blog;?>' class='btn btn-sm btn-danger'>Hapus</a>
+                <a href='<?php echo base_url() ?>home/delete/<?php echo $key->id_blog;?>' class='btn btn-sm btn-danger'>Hapus</a>
 
               </td>
             </tr>
@@ -117,6 +122,28 @@
         </div>
       <?php endforeach ?>
     </div>
+
+
+<!-- <nav aria-label="Page navigation example">
+<ul class="pagination justify-content-center">
+ <li class="page-item disabled">
+ <a class="page-link" href="#" tabindex="-1">Previous</a>
+ </li>
+ <li class="page-item"><a class="page-link" href="#">1</a></li>
+ <li class="page-item"><a class="page-link" href="#">2</a></li>
+ <li class="page-item"><a class="page-link" href="#">3</a></li>
+ <li class="page-item">
+ <a class="page-link" href="#">Next</a>
+ </li>
+</ul>
+</nav> -->
+
+<?php
+if(isset($links)) {
+  echo $links;
+}
+?>
+
 
     <div class="container">
       <!-- <?php
@@ -153,7 +180,7 @@
 
 <br>
 <div>
-  <a href='category' class='btn btn-sm btn-danger'>Kategori</a>
+  <a href='<?php echo base_url() ?>category' class='btn btn-sm btn-danger'>Kategori</a>
 </div>
 
 
@@ -173,11 +200,11 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="assets/vendor/jquery/jquery.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/vendor/jquery/jquery.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="assets/js/clean-blog.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/clean-blog.min.js"></script>
 
   </body>
 

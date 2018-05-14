@@ -8,6 +8,33 @@ class Artikel extends CI_Model {
 		return $query->result();
 	}	
 
+	public function get_all_artikel( $limit = FALSE, $offset = FALSE )
+ 	{
+ 	// Jika variable $limit ada pada parameter maka kita limit query-nya
+ 		if ( $limit ) {
+ 			$this->db->limit($limit, $offset);
+ 		}
+ 		$query = $this->db->get('blog');
+		return $query->result();
+ 			// Urutkan berdasar tanggal
+ 		// $this->db->order_by('blog.tanggal_blog', 'DESC');
+ 		// Inner Join dengan table Categories
+ 		// $this->db->select('*');
+ 		// $this->db->from('blog');
+ 		// $this->db->join('categories', 'categories.id_cat = blog.id_blog');
+ 		// return $this->db->get()->result();
+ 	}
+
+
+		public function get_total()
+ 	{
+ 		// Dapatkan jumlah total artikel
+ 		return $this->db->count_all("blog");
+ 	}
+
+
+
+
 	public function get_single($id)
 	{
 		$query = $this->db->query('select * from blog where id_blog='.$id);
@@ -15,8 +42,8 @@ class Artikel extends CI_Model {
 
 		$this->db->select("*");
 		$this->db->from('blog');
-		$this->db->join('categories','blog.id_cat = categories.id_cat');
-		$this->db->Where('blog.id_blog='.$id);
+		$this->db->join('categories','blog.id_blog = categories.id_cat');
+		$this->db->Where('blog.id_blog='.$id_blog);
 		return $this->db->get()->result();
 
 	}

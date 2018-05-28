@@ -64,6 +64,13 @@
       </div>
     </nav>
 
+
+
+
+
+
+
+
     <!-- Page Header -->
     <header class="masthead" style="background-image: url('<?php echo base_url() ?>assets/img/zalora.png')">
       <div class="overlay"></div>
@@ -84,6 +91,12 @@
    <div class="container">
         <a href="<?php echo base_url() ?>home/tambah" class="btn btn-success"> Tambah </a>
    </div>
+
+
+
+
+
+
    <span id="about"></span>   
    <center><b>
     Perkembangan Trend Fashion Indonesia
@@ -182,6 +195,50 @@ if(isset($links)) {
 <div>
   <a href='<?php echo base_url() ?>category' class='btn btn-sm btn-danger'>Kategori</a>
 </div>
+
+<?php if(!$this->session->userdata('logged_in')) : ?>
+
+                   <div class="btn-group" role="group" aria-label="Data baru">
+                         <?php echo anchor('user/register', 'Register', array('class' => 'btn btn-sm btn-info')); ?>
+                        <?php echo anchor('user/login', 'Login', array('class' => 'btn btn-sm btn-info')); ?>
+
+                    </div>
+
+                <?php endif; ?>
+
+
+                <?php if($this->session->userdata('logged_in')) : ?>
+                    <div class="btn-group" role="group" aria-label="Data baru">
+
+
+                        <?php echo anchor('category/create', 'Kategori Baru', array('class' => 'btn btn-sm btn-info')); ?>
+
+                         <?php echo anchor('user/register', 'Register', array('class' => 'btn btn-sm btn-info')); ?>
+
+                        
+                        <?php echo anchor('user/logout', 'Logout', array('class' => 'btn btn-sm btn-info')); ?>
+                    </div>
+                <?php endif; ?>
+
+             </div>
+         </nav>
+
+       <?php if($this->session->flashdata('user_registered')): ?>
+         <?php echo '<div class="alert alert-success" role="alert">'.$this->session->flashdata('user_registered').'</div>'; ?>
+       <?php endif; ?>
+        <?php if($this->session->flashdata('login_failed')): ?>
+         <?php echo '<div class="alert alert-danger">'.$this->session->flashdata('login_failed').'</div>'; ?>
+        <?php endif; ?>
+
+        <?php if($this->session->flashdata('user_loggedin')): ?>
+        <?php echo '<div class="alert alert-success">'.$this->session->flashdata('user_loggedin').'</div>'; ?>
+        <?php endif; ?>
+
+         <?php if($this->session->flashdata('user_loggedout')): ?>
+          <?php echo '<div class="alert alert-success">'.$this->session->flashdata('user_loggedout').'</div>'; ?>
+        <?php endif; ?>
+    </nav>
+
 
 
               <li class="list-inline-item">

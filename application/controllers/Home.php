@@ -3,6 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller {
 
+	function __construct(){
+
+		parent::__construct();
+
+		$this->load->model('category_model');
+		$this->load->model('artikel');
+
+	}
+
 	public function index()
 	{
 		$this->load->model('artikel');
@@ -32,9 +41,10 @@ class Home extends CI_Controller {
  		$data["links"] = $this->pagination->create_links();
 		}
 
+
+		// $this->load->view('header');
 		$this->load->view('home_view',$data);
-
-
+		// $this->load->view('footer');
 
 	}
 
@@ -42,13 +52,20 @@ class Home extends CI_Controller {
 	{
 		$this->load->model('artikel');
 		$data['detail'] = $this->artikel->get_single($id);
+		// $this->load->view('header');
 		$this->load->view('home_detail', $data);
+		// $this->load->view('footer');
 	}
 
 
 
 public function tambah()
 {
+	//cek login
+	if(!$this->session->userdata('logged_in')){
+		redirect('user/login');
+	}
+
 	$this->load->model('artikel');
 	$this->load->model('category_model');
 	$data = array();
@@ -78,8 +95,9 @@ public function tambah()
 			}
 		}
 		
-
+		// $this->load->view('header');
 		$this->load->view('home_view', $data);
+		// $this->load->view('footer');
 	}
 }
 

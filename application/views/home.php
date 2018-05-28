@@ -61,6 +61,7 @@
       </div>
     </nav>
 
+
     <!-- Page Header -->
     <header class="masthead" style="background-image: url('assets/img/zalora.png')">
       <div class="overlay"></div>
@@ -75,6 +76,9 @@
         </div>
       </div>
     </header>
+
+
+
 
     <!-- Main Content -->
     <tr>
@@ -180,15 +184,12 @@ Temukan ribuan brand lokal dan internasional untuk melengkapi kebutuhan fashion 
       <td height="5" width="1769" style="border-style: none; border-width: medium" colspan="7">
       <hr color="#000000" size="4">&nbsp;</td>
     </tr>
-   
-
-
-
-
+  
 
   </table>
   </center>
 </div>
+
 
 </body>
 

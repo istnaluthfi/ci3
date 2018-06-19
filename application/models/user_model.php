@@ -14,6 +14,7 @@ class User_model extends CI_Model {
             'username' => $this->input->post('username'),
             'password' => $enc_password,
             'kodepos' => $this->input->post('kodepos')
+            'level_id' => $this->input->post('level_id')
         );
 
         // Insert user
@@ -35,4 +36,66 @@ class User_model extends CI_Model {
             return false;
         }
     }
-}
+
+    // Mendapatkan level user
+
+    function get_user_level($user_id)
+
+    {
+
+        // Dapatkan data user berdasar $user_id
+
+        $this->db->select('level_id');
+
+       $this->db->where('user_id', $user_id);
+
+
+
+        $result = $this->db->get('users');
+
+
+
+        if($result->num_rows() == 1){
+
+            return $result->row(0);
+
+        } else {
+
+            return false;
+
+        }
+
+    }
+
+
+
+    function get_user_details($user_id)
+
+    {
+
+        $this->db->join('levels', 'levels.level_id = users.level_id', 'left');
+
+        $this->db->where('user_id', $user_id);
+
+
+
+        $result = $this->db->get('users');
+
+
+
+        if($result->num_rows() == 1){
+
+            return $result->row(0);
+
+        } else {
+
+            return false;
+
+        }
+
+    }
+
+
+ }
+
+

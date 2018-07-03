@@ -13,8 +13,8 @@ class User_model extends CI_Model {
             'email' => $this->input->post('email'),
             'username' => $this->input->post('username'),
             'password' => $enc_password,
-            'kodepos' => $this->input->post('kodepos')
-            'level_id' => $this->input->post('level_id')
+            'kodepos' => $this->input->post('kodepos'),
+            'fk_level_id' => $this->input->post('membership')
         );
 
         // Insert user
@@ -45,7 +45,7 @@ class User_model extends CI_Model {
 
         // Dapatkan data user berdasar $user_id
 
-        $this->db->select('level_id');
+        $this->db->select('fk_level_id');
 
        $this->db->where('user_id', $user_id);
 
@@ -57,7 +57,7 @@ class User_model extends CI_Model {
 
         if($result->num_rows() == 1){
 
-            return $result->row(0);
+            return $result->row(0)->fk_level_id;
 
         } else {
 
@@ -73,7 +73,7 @@ class User_model extends CI_Model {
 
     {
 
-        $this->db->join('levels', 'levels.level_id = users.level_id', 'left');
+        $this->db->join('levels', 'levels.level_id = users.fk_level_id', 'left');
 
         $this->db->where('user_id', $user_id);
 
